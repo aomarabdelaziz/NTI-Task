@@ -1,0 +1,8 @@
+
+//2 - Write a PHP function to get the characters after the last '/' in an url. Go to the editor
+<?php
+
+$url = 'http://www.example.com/5478631';
+echo substr($url , strrpos($url ,'/') + 1 );
+
+?>

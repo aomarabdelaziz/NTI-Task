@@ -1,0 +1,7 @@
+
+//1 - Write a PHP function to print the next character of a specific character.
+<?php
+	$char = 'a';
+	$nextChar = chr(ord($char) + 1 );
+	echo $nextChar;
+?>
