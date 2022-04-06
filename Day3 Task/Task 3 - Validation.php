@@ -1,4 +1,18 @@
 <?php
+
+function is_email($email){
+    return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email)) ? FALSE : TRUE;
+}
+
+function is_url($url){
+    if(preg_match( '/^(http|https):\\/\\/[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}'.'((:[0-9]{1,5})?\\/.*)?$/i' ,$url)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
@@ -23,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         if(empty($email)){
             $errors['email'] = 'Required';
         }
-        if(!filter_var($email, FILTER_SANITIZE_EMAIL)){
+        if(!is_email($email)){
             $errors['email'] = 'Email must be a valid email';
         }
         ///End [Email Validation]
@@ -50,7 +64,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         if(empty($url)){
             $errors['url'] = 'Required';
         }
-        if(!filter_var($url , FILTER_VALIDATE_URL)){
+        if(!is_url($url)){
             $errors['url'] = 'URL must be valid url';
         }
         ///End [LinkUrl Validation]
@@ -66,6 +80,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         else {
             echo 'Valid Data';
         }
+
+
+
+
     }
 ?>
 
