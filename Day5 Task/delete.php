@@ -14,6 +14,8 @@ if(isset($_GET['id']))
 
         if(!empty($line))
         {
+            $title = $arrayOfData[0];
+            $content = $arrayOfData[1];
             $fullPath = trim($arrayOfData[2]);
             $allData = $title . ' | ' . $content . ' | ' . $fullPath . PHP_EOL;
             if($fullPath != $idByPath) {
