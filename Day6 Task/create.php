@@ -4,6 +4,8 @@ include 'dbConnection.php';
 include "helpers/functions.php";
 
 
+
+
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
@@ -66,9 +68,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         $newDate = explode('-',$date);
 
-        if(checkdate($newDate[0], $newDate[1], $newDate[2])){
-            $date=date("m-d-y",strtotime($date));
+        if(checkdate($newDate[1], $newDate[2], $newDate[0]))
+        {
+
+            $currentDate = date('Y-m-d');
+            $date=date("Y-m-d",strtotime($date));
+
+            if($date != $currentDate){
+                $errors['date'] = "Date must be equal the current date";
+
+            }
+
+
         }
+
+
 
 
     }
@@ -100,8 +114,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     }
 
-    header('location: index.php');
 
+    header("location: index.php");
 
 }
 ?>
