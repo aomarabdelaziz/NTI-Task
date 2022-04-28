@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\UserAuth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -50,7 +50,7 @@ class UserController extends Controller
             ]);
 
 
-         User::create([
+         UserAuth::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
